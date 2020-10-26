@@ -1,0 +1,33 @@
+{
+  "name": "api-gql-mongo-express",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "babel src -d dist --source-maps",
+    "start-prod": "node dist/index.js",
+    "start-dev": "babel-node src/index.js",
+    "dev": "nodemon src/index.js --exec babel-node"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3",
+    "@babel/node": "^7.12.1",
+    "@babel/preset-env": "^7.12.1",
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "eslint": "^7.12.0",
+    "husky": "^4.3.0",
+    "nodemon": "^2.0.6",
+    "prettier": "2.1.2"
+  },
+  "husky":{
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "npx prettier --write src/* && npx eslint --fix src/*"
+    }
+  }
+}
